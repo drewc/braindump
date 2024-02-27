@@ -1,0 +1,12 @@
+:PROPERTIES:
+:ID:       0071cd9d-11b5-461b-a908-73e1e54e4276
+:END:
+#+title: Ledger
+
+Ledger and also an [[id:DF210E9C-E9DC-4DBD-89DB-A5EC3A013A66][Emacs]] package on top of [[id:baf71be1-3382-4b44-acda-c8ba37834fac][Org Mode]].
+
+#+begin_src emacs-lisp
+  (org-babel-do-load-languages
+   'org-babel-load-languages
+   `((ledger . t) ,@org-babel-load-languages))
+#+end_src

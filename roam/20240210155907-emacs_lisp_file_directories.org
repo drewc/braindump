@@ -1,0 +1,43 @@
+:PROPERTIES:
+:ID:       DFD9CAEA-8E58-4571-8577-01C3EB1E2058
+:END:
+#+title: Emacs Lisp: File Directories
+
+#+begin_quote
+
+Function: directory-files directory &optional full-name match-regexp nosort count ¶
+
+    If full-name is non-nil, the function returns the files’ absolute
+    file names. Otherwise, it returns the names relative to the
+    specified directory.
+
+    This function returns a list of the names of the files in the
+    directory directory. By default, the list is in alphabetical
+    order.
+
+    If match-regexp is non-nil, this function returns only those file
+    names whose non-directory part contain a match for that regular
+    expression—the other file names are excluded from the list. On
+    case-insensitive filesystems, the regular expression matching is
+    case-insensitive.
+
+    If nosort is non-nil, directory-files does not sort the list, so
+    you get the file names in no particular order. Use this if you
+    want the utmost possible speed and don’t care what order the files
+    are processed in. If the order of processing is visible to the
+    user, then the user will probably be happier if you do sort the
+    names.
+
+    If count is non-nil, the function will return names of first count
+    number of files, or names of all files, whichever occurs
+    first. count has to be an integer greater than zero.
+
+    (directory-files "~lewis")
+         ⇒ ("#foo#" "#foo.el#" "." ".."
+             "dired-mods.el" "files.texi"
+             "files.texi.~1~")
+
+    An error is signaled if directory is not the name of a directory that can be read. 
+#+end_quote
+
+[[id:F53BC6DB-61F2-42EE-89B2-DD218AB63E23][Second Node]]

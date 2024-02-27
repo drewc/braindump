@@ -1,0 +1,22 @@
+:PROPERTIES:
+:ID:       DF210E9C-E9DC-4DBD-89DB-A5EC3A013A66
+:END:
+#+title: Emacs
+
+Emacs, my main platform. This node is from [[id:8CEF5C13-DB24-41A0-B664-51314C3C8304][Org Roam]].
+
+* Per-directory local variables
+
+In emacs there is [[info:emacs#Directory Variables][Per-Directory Local Variables]] 
+
+#+begin_src emacs-lisp
+     ;; Here’s an example of a ‘.dir-locals.el’ file:
+     ((nil . ((indent-tabs-mode . t)
+              (fill-column . 80)
+              (mode . auto-fill)))
+      (c-mode . ((c-file-style . "BSD")
+                 (subdirs . nil)))
+      ("src/imported"
+       . ((nil . ((change-log-default-name
+                   . "ChangeLog.local"))))))
+#+end_src

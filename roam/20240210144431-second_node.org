@@ -1,0 +1,36 @@
+:PROPERTIES:
+:ID:       F53BC6DB-61F2-42EE-89B2-DD218AB63E23
+:END:
+#+title: Second Node
+
+The First Node worked great and I can insert a space in the minibuffer now.
+
+Watching System Crafters : https://youtu.be/AyhPmypHDEw?si=jcGNnLY0L1HkRwJA
+
+ =Getting Started with Org Roam - Build a Second Brain in Emacs=
+
+ He gets a node list when he hits ~C-c n f~ for find node. Hrm.
+
+ 
+I don't, but hitting tab does give me the completion of "First Node",
+so moving on.
+
+It gets exactly where I want to go next which is ~C-c n i~. That
+allows me to tab complete link to [[id:A086D13C-DDDF-4019-A71C-606B0CDBE39E][First Node]].
+
+I can just create a link to a non-existing node? [[id:CF17574B-4AAB-401C-89E6-C46F18272CDE][Third Node]]. I can.
+
+Now apparantly there's a =[[]]= type =roam:<node>= syntax for org
+links? This gets better and better.
+
+#+begin_src emacs-lisp
+  (setq org-roam-completion-everywhere t)
+#+end_src
+
+[[id:A086D13C-DDDF-4019-A71C-606B0CDBE39E][First Node]]
+
+
+Still don't have it working. But really, A node for Org Roam in and of
+itself is a better idea than my current exploration.
+
+So insert a link! [[id:8CEF5C13-DB24-41A0-B664-51314C3C8304][Org Roam]]

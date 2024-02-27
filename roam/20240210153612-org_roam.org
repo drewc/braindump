@@ -1,0 +1,111 @@
+:PROPERTIES:
+:ID:       8CEF5C13-DB24-41A0-B664-51314C3C8304
+:END:
+#+title: Org Roam
+
+This is the =Org Roam node= for =Org Roam=. Did I mention I love metacircles?
+
+    It's an [[id:DF210E9C-E9DC-4DBD-89DB-A5EC3A013A66][Emacs]] package on top of [[id:baf71be1-3382-4b44-acda-c8ba37834fac][Org Mode]]. In Emacs there's an [[info:org-roam#Top][info]] node.
+
+    We use [[id:7256eef8-dca2-40bb-92e0-8c3a29eab4ce][Consult Org Roam.]]
+
+    
+
+* Capture Templates
+
+System Crafters has [[https://www.youtube.com/watch?v=YxgA5z2R08I&ab_channel=SystemCrafters][a video]] and [[https://systemcrafters.net/build-a-second-brain-in-emacs/capturing-notes-efficiently/][notes]].
+
+* Multiple Org Roams and a collection:
+
+We've got some subdirectories.
+#+begin_src emacs-lisp :tangle ~/me/src/ecm/roam/.dir-locals.el
+  ((nil . ((eval . (setq-local
+                    org-roam-directory (expand-file-name
+  				      "./"
+  				      (locate-dominating-file
+                                         default-directory ".dir-locals.el"))))
+  	 (eval . (setq-local
+                    org-roam-db-location (expand-file-name
+  					"org-roam.db"
+  					org-roam-directory))))))
+#+end_src
+** Logs
+
+In emacs there is [[info:emacs#Directory Variables][Per-Directory Local Variables]].
+
+#+begin_quote
+Emacs supports directory-local variables, allowing the value of
+org-roam-directory to be different in different directories. It does
+this by checking for a file named .dir-locals.el.
+ --[[https://www.orgroam.com/manual.html#How-do-I-have-more-than-one-Org_002droam-directory_003f][Org Roam Manual]]
+#+end_quote
+
+Does =org-roam= allow sub directories?
+
+[[id:006D6B75-64DE-4A57-A5F9-83CF8F9A111A][Roam Subdir]]
+
+#+begin_src sh
+  mkdir test-subdir
+  mv -v *roam_subdir* test-subdir
+#+end_src
+
+Then if I ~M-x org-roam-db-sync~ it works! Brilliant.
+
+** The =ECM= roam subrepo/dir
+
+Adding a local "this repo only" org roam database. 
+
+#+begin_src emacs-lisp :tangle ~/me/src/ecm/.dir-locals.el
+  ((nil . ((eval . (setq-local
+                    org-roam-directory (expand-file-name
+  				      "./roam/"
+  				      (locate-dominating-file
+                                         default-directory ".dir-locals.el"))))
+  	 (eval . (setq-local
+                    org-roam-db-location (expand-file-name
+  					"org-roam.db"
+  					org-roam-directory))))))
+#+end_src
+
+
+This one has some great autogen templates: 
+https://www.reddit.com/r/emacs/comments/s8mwiw/orgroam_a_way_to_use_subdirectories/
+
+https://weblog.masukomi.org/2022/01/28/splitting-an-org-roam-collection/
+
+
+
+
+* Use Package and Configuration
+#+begin_src emacs-lisp :tangle ~/.emacs.d/roam/00-org-roam.el
+  (use-package org-roam
+    :straight t
+    :custom
+    (org-roam-directory (file-truename "~/me/braindump/roam"))
+    (org-roam-completion-everywhere t)
+    :bind (("C-c n l" . org-roam-buffer-toggle)
+  	 ("C-c n f" . org-roam-node-find)
+  	 ("C-c n g" . org-roam-graph)
+  	 ("C-c n i" . org-roam-node-insert)
+  	 ("C-c n c" . org-roam-capture)
+  	 ;; Dailies
+  	 ("C-c n j" . org-roam-dailies-capture-today)
+  	 :map org-mode-map
+  	 ("C-M-i" . completion-at-point)
+  	 :map minibuffer-local-completion-map
+  	 ("SPC" . self-insert-command))
+    :config
+    ;; If you're using a vertical completion framework, you might want a more informative completion interface
+    (setq org-roam-node-display-template (concat "${title:*} " (propertize "${tags:10}" 'face 'org-tag)))
+    (org-roam-db-autosync-mode)
+    ;; If using org-roam-protocol
+    (require 'org-roam-protocol))
+#+end_src
+
+* Backlinks
+
+To help me find this file at first lol
+
+[[id:A086D13C-DDDF-4019-A71C-606B0CDBE39E][First Node]]
+
+[[id:F53BC6DB-61F2-42EE-89B2-DD218AB63E23][Second Node]]

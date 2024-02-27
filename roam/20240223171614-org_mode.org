@@ -1,0 +1,21 @@
+:PROPERTIES:
+:ID:       baf71be1-3382-4b44-acda-c8ba37834fac
+:END:
+#+title: Org Mode
+
+#+begin_quote
+Org Mode
+
+Your life in plain text
+
+A GNU Emacs major mode for keeping notes, authoring documents,
+computational notebooks, literate programming, maintaining to-do
+lists, planning projects, and more — in a fast and effective plain
+text system.
+#+end_quote
+
+
+#+begin_src emacs-lisp :tangle ~/.emacs.d/roam/00-org-contrib.el
+  (use-package org-contrib :straight t)
+#+end_src
+[[id:7479f2e9-1919-45bf-940f-f4c3bab05bd2][Org Web Tools]]

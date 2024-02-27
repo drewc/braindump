@@ -1,0 +1,10 @@
+:PROPERTIES:
+:ID:       CF17574B-4AAB-401C-89E6-C46F18272CDE
+:END:
+#+title: Third Node
+
+Nice, this is from an insert link to a non-existent file that, heh,
+now-exists. When I hit ~C-c C-c~ again I'll go back there? The split
+buffer says this link does not yet exist.
+
+exciting!

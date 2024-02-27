@@ -1,0 +1,21 @@
+:PROPERTIES:
+:ID:       A086D13C-DDDF-4019-A71C-606B0CDBE39E
+:END:
+#+title: First Node
+
+This is my first org roam node.
+
+I needed to hit =C-q SPACE= to get the space character.
+
+Got that from here: 
+
+https://org-roam.discourse.group/t/org-roam-node-find-space-not-allowed-in-node-title/1847/6
+
+It also says this works:
+
+#+begin_src emacs-lisp
+  (define-key minibuffer-local-completion-map (kbd "SPC") 'self-insert-command)
+#+end_src
+
+I'll try that after saving this first node with =C-c C-c=.
+
