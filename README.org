@@ -1,0 +1,45 @@
+#+TITLE: DrewC's Braindump
+
+Seriously needed! Zettelkasten!
+
+The first google gives methis: https://github.com/dnbias/braindump?tab=readme-ov-file
+
+and this https://github.com/jethrokuan/braindump
+
+this is a good one : https://www.badykov.com/common/braindump/
+
+https://github.com/ayrat555/braindump
+
+* The HTML export
+
+This is all taken care of in [[file:roam/20240227135600-html_export.org::+title: HTML Export][This Node.]]
+
+In Emacs [[id:7617ded2-9551-43f7-8c33-60d98a86cdda][HTML Export]] is the link. What does github do with it?
+
+* Org Roam
+
+Based off of [[https://roamresearch.com/][Roam]], but developed for the Emacs Lisp Machine, this
+seems to be the combination of notes + personal wiki + microblog I need.
+
+#+begin_src emacs-lisp
+    (use-package org-roam
+      :straight t
+      :custom
+      (org-roam-directory (file-truename "~/me/braindump/roam"))
+      (setq org-roam-completion-everywhere t)
+      :bind (("C-c n l" . org-roam-buffer-toggle)
+    	   ("C-c n f" . org-roam-node-find)
+    	   ("C-c n g" . org-roam-graph)
+    	   ("C-c n i" . org-roam-node-insert)
+    	   ("C-c n c" . org-roam-capture)
+    	   ;; Dailies
+    	   ("C-c n j" . org-roam-dailies-capture-today)
+  	   :map org-mode-map
+  	   ("C-M-i" . completion-at-point))
+      :config
+      ;; If you're using a vertical completion framework, you might want a more informative completion interface
+      (setq org-roam-node-display-template (concat "${title:*} " (propertize "${tags:10}" 'face 'org-tag)))
+      (org-roam-db-autosync-mode)
+      ;; If using org-roam-protocol
+      (require 'org-roam-protocol))
+#+end_src
